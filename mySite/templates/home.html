@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}Home{% endblock %}
-
+{% load static %}
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
+  <h1>Hi {{ user.username }}!</h1>
+  <img src="{% static 'img/default_avatar.png'%}" height="200">
+  <p><a href="{% url 'settings' %}">Settings</a></p>
   <p><a href="{% url 'logout' %}">Log Out</a></p>
-  <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
 {% else %}
   <p>You are not logged in</p>
   <p><a href="{% url 'login' %}">Log In</a></p>
